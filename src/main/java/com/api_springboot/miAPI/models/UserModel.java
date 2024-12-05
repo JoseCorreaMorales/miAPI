@@ -2,15 +2,23 @@ package com.api_springboot.miAPI.models;
 
 
 import jakarta.persistence.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 
 @Entity
 @Table(name = "users")
+@ToString @EqualsAndHashCode // lombok
 public class UserModel {
-    @Id
+    @Id // indicar la clave primaria
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Opción para que el ID se genere automáticamente
+
+    @Getter @Setter // con la dependecias de lombok se puede emitir los getters y settes por esta anotacion
     private Long id;
     @Column
+    // @Column(name = "name") para especificar el nombre que esta en la bd si es que es diferente al nombre de variable
     private String name;
     @Column
     private String lastname;
@@ -26,13 +34,13 @@ public class UserModel {
         this.age = age;
     }
 
-    public Long getId() {
-        return id;
-    }
+    // Long getId() {
+    //    return id;
+    //}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    //public void setId(Long id) {
+      //  this.id = id;
+    //}
 
     public String getName() {
         return name;
